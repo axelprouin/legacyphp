@@ -14,7 +14,6 @@ services:
       - DB_USER=root
       - DB_PASS=root
       - DB_NAME=ouvrages
-
   mariadb:
     image: mariadb:10.3
     environment:
@@ -22,3 +21,8 @@ services:
       - MYSQL_DATABASE=ouvrages
     volumes:
       - ./resources:/docker-entrypoint-initdb.d:ro
+  mailhog:
+    image: mailhog/mailhog:v1.0.0
+    ports:
+      - "1025:1025"
+      - "8025:8025"

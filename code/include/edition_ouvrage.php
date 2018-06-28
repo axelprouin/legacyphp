@@ -1,5 +1,8 @@
 <?php
 
+$container = require dirname(__FILE__) . '/../config/di.global.php';
+$fileSystem = $container->get('Filesystem');
+
 /**
  * Si l'identifiant de l'ouvrage à editer n'est pas
  * renseigné, l'utilisateur est redirigé vers la page d'accueil
@@ -17,8 +20,8 @@ if (isset($_POST['editer'])) {
     if (!empty($_FILES['couverture']['tmp_name'])
         && is_uploaded_file($_FILES['couverture']['tmp_name'])
         && !empty($_FILES['couverture']['name'])) {
-        
-        $bUpload = (bool) move_uploaded_file($_FILES['couverture']['tmp_name'], 'couverture/' . $_FILES['couverture']['name']);
+
+        $bUpload = (bool) $fileSystem->write($_FILES['couverture']['name'], file_get_contents($_FILES['couverture']['tmp_name']));
     }
 
     /**

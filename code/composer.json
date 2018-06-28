@@ -1,8 +1,16 @@
 {
     "require": {
-        "vlucas/phpdotenv": "^2.4"
+        "vlucas/phpdotenv": "^2.4",
+        "gaufrette/local-adapter": "^0.4.0",
+        "psr/container": "^1.0",
+        "zendframework/zend-stdlib": "^2.5"
     },
     "config": {
         "sort-package": true
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
     }
 }

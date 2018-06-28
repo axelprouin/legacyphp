@@ -7,16 +7,50 @@ namespace Composer\Autoload;
 class ComposerStaticInit0d34b088de7de3d233089f0d6e1ea12d
 {
     public static $prefixLengthsPsr4 = array (
+        'Z' => 
+        array (
+            'Zend\\Stdlib\\' => 12,
+        ),
+        'P' => 
+        array (
+            'Psr\\Container\\' => 14,
+        ),
         'D' => 
         array (
             'Dotenv\\' => 7,
         ),
+        'A' => 
+        array (
+            'App\\' => 4,
+        ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'Zend\\Stdlib\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/zendframework/zend-stdlib/src',
+        ),
+        'Psr\\Container\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/container/src',
+        ),
         'Dotenv\\' => 
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
+        ),
+    );
+
+    public static $prefixesPsr0 = array (
+        'G' => 
+        array (
+            'Gaufrette' => 
+            array (
+                0 => __DIR__ . '/..' . '/knplabs/gaufrette/src',
+            ),
         ),
     );
 
@@ -25,6 +59,7 @@ class ComposerStaticInit0d34b088de7de3d233089f0d6e1ea12d
         return \Closure::bind(function () use ($loader) {
             $loader->prefixLengthsPsr4 = ComposerStaticInit0d34b088de7de3d233089f0d6e1ea12d::$prefixLengthsPsr4;
             $loader->prefixDirsPsr4 = ComposerStaticInit0d34b088de7de3d233089f0d6e1ea12d::$prefixDirsPsr4;
+            $loader->prefixesPsr0 = ComposerStaticInit0d34b088de7de3d233089f0d6e1ea12d::$prefixesPsr0;
 
         }, null, ClassLoader::class);
     }

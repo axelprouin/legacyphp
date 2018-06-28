@@ -5,6 +5,8 @@
  * Ce script vérifie que les différentes collections sont valides et alertent les administrateurs dans le cas contraire.
  */
 
+require dirname(dirname(__FILE__)) . '/vendor/autoload.php';
+
 if (empty($_ENV['DB_HOST']) || !isset($_ENV['DB_HOST'])) {
     throw new Exception('DB is not configured as an environment var');
 }
