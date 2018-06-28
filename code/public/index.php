@@ -1,13 +1,20 @@
-<?
+<?php
 
 require dirname(__FILE__) . '/../vendor/autoload.php';
 
 session_start();
 
-if ('identification' == $_GET['page'] and isset($_SESSION['identifie']) && true === $_SESSION['identifie'])
-header('Location: index.php');
+//charger une config applicative
+$config = require dirname(dirname(__FILE__)) . '/config/di.global.php';
 
-    require dirname(__FILE__) . '/../include/connexion.php';
+//kernel applicatif
+$application = \App\Application::createFromConfig($config);
+
+//if ('identification' == $_GET['page'] and isset($_SESSION['identifie'])
+//    && true === $_SESSION['identifie']) {
+//    header('Location: index.php');
+//    require dirname(__FILE__) . '/../include/connexion.php';
+//}
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -19,10 +26,7 @@ header('Location: index.php');
 	<body>
         <? require dirname(__FILE__) . '/../include/menu.php' ?>
         <div id="contenu">
-            <?php
-            if (!empty($_GET['page'])) include (dirname(__FILE__) . '/include/' . basename($_GET['page']));
-            else
-                include (dirname(__FILE__) . '/../include/collection.php'); ?>
+           <?php $application->run(); ?>
         </div>
     </body>
 </html>

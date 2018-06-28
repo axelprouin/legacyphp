@@ -6,7 +6,7 @@ use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\ContainerInterface;
 use Psr\Container\NotFoundExceptionInterface;
 
-class Container implements ContainerInterface
+final class Container implements ContainerInterface
 {
     private $aliases = [];
     private $factories = [];

@@ -1,7 +1,7 @@
 <?php
 $sSortie = '';
 $sRequeteSql = 'SELECT * FROM collection ORDER BY titre';
-$aCollections = $oConnexion->query($sRequeteSql)
+$aCollections = $this->dbConnection->query($sRequeteSql)
                            ->fetchAll();
 
 if (!empty($aCollections)) :
