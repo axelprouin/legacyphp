@@ -6,7 +6,7 @@ use App\Polyfill\RequestHandlerInterface;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response;
 
-final class AjoutCollection implements RequestHandlerInterface
+final class AjoutCollection extends AbstractAction implements RequestHandlerInterface
 {
     public function handle(ServerRequestInterface $request)
     {

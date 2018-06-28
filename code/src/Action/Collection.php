@@ -7,25 +7,23 @@ use PDO;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response;
 
-final class Collection implements RequestHandlerInterface
+final class Collection extends AbstractAction implements RequestHandlerInterface
 {
+    /**
+     * @var PDO
+     */
     private $dbConnection;
 
-    private $templateRenderer;
-
-    public function __construct(PDO $dbConnection, TemplateRendererInterface $templateRenderer)
+    public function __construct(PDO $dbConnection)
     {
 
         $this->dbConnection = $dbConnection;
-        $this->templateRenderer = $templateRenderer;
     }
 
     public function handle(ServerRequestInterface $request)
     {
-        ob_start();
-        require dirname(dirname(dirname(__FILE__))) . '/include/collection.php';
-        $content = ob_get_clean();
-
-        return new Response\HtmlResponse($content);
+        return new Response\HtmlResponse($this->render('collection.php', [
+            'dbConnection' => $this->dbConnection
+        ]));
     }
 }
