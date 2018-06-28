@@ -26,7 +26,7 @@ $application = \App\Application::createFromConfig($config);
 	<body>
         <? require dirname(__FILE__) . '/../include/menu.php' ?>
         <div id="contenu">
-           <?php $application->run(); ?>
+           <?php $application->run()->getBody(); ?>
         </div>
     </body>
 </html>

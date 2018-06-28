@@ -48,6 +48,6 @@ class Application
         $handler = $this->container->get($handlerName);
         //dispatch
         /* @var $response ResponseInterface */
-        $response = $this->dispatcher->dispatch($request, $handler);
+        return $this->dispatcher->dispatch($request, $handler);
     }
 }
