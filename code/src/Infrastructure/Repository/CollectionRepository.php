@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Infrastrucutre\Repository;
+namespace App\Infrastructure\Repository;
 
-use App\Domain\Repository\CollectionRepository as DomaineCollectionRepositoryuse PDO;
+use App\Domain\Repository\CollectionRepository as DomaineCollectionRepository;
+use PDO;
 
 final class CollectionRepository implements DomaineCollectionRepository
 {

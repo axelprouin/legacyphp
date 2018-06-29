@@ -5,6 +5,8 @@ use App\Action\Collection;
 use App\DependencyInjection\Container;
 use App\DependencyInjection\Exception\InvalidConfigurationException;
 use App\Dispatcher;
+use App\Infrastructure\Repository\CacheCollectionRepository;
+use App\Infrastructure\Repository\CollectionRepository;
 use Gaufrette\Adapter;
 use Gaufrette\Adapter\Local;
 use Gaufrette\Filesystem;
@@ -12,6 +14,7 @@ use \App\DependencyInjection\Factory\Filesystem as FilesystemFactory;
 use \App\DependencyInjection\Factory\FilesystemAdapter as FilesystemAdapter;
 use Psr\Container\ContainerInterface;
 use Psr\Log\NullLogger;
+use Symfony\Component\Cache\Adapter\RedisAdapter;
 
 $dirname = dirname(__FILE__) . '/di.local.php';
 $customParams = [];
@@ -97,8 +100,21 @@ $baseParams = [
         }
 
     },
-    'domain_collection_repository_interface' => function() {
-    
+    'domain_collection_repository_interface' => 'cached_collection_repository',
+    'cached_collection_repository' => function(ContainerInterface $container) {
+        return new CacheCollectionRepository(
+            $container->get('collection_repository'),
+            $container->get('cache_interface')
+        );
+    },
+    'cache_interface' => function(ContainerInterface $container) {
+        return new RedisAdapter($container->get('redis_connection'));
+    },
+    'redis_connection' => function() {
+        return RedisAdapter::createConnection('redis://redis');
+    },
+    'collection_repository' => function(ContainerInterface $container) {
+        return new CollectionRepository($container->get('db_connection'));
     },
     'logger' => function() {
         return new NullLogger();

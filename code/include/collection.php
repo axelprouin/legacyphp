@@ -1,8 +1,4 @@
 <?php
-$sSortie = '';
-$sRequeteSql = 'SELECT * FROM collection ORDER BY titre';
-$aCollections = $dbConnection->query($sRequeteSql)
-                           ->fetchAll();
 
 if (!empty($aCollections)) :
 

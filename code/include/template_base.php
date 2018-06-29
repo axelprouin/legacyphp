@@ -6,7 +6,7 @@
         <link href="css/principal.css" media="screen" rel="stylesheet" type="text/css">
     </head>
     <body>
-        <? require dirname(__FILE__) . '/menu.php' ?>
+        <?php require dirname(__FILE__) . '/menu.php' ?>
         <div id="contenu">
             <?php echo $content ?>
         </div>

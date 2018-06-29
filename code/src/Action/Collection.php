@@ -11,10 +11,6 @@ use Zend\Diactoros\Response;
 final class Collection extends AbstractAction implements RequestHandlerInterface
 {
     /**
-     * @var PDO
-     */
-    private $dbConnection;
-    /**
      * @var CollectionRepository
      */
     private $collectionRepository;
@@ -27,7 +23,7 @@ final class Collection extends AbstractAction implements RequestHandlerInterface
     public function handle(ServerRequestInterface $request)
     {
         return new Response\HtmlResponse($this->render('collection.php', [
-            'dbConnection' => $this->dbConnection
+            'aCollections' => $this->collectionRepository->findAll()
         ]));
     }
 }
