@@ -3,6 +3,7 @@
 namespace App\Action;
 
 use App\Polyfill\RequestHandlerInterface;
+use App\Repository\CollectionRepository;
 use PDO;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response;
@@ -13,11 +14,14 @@ final class Collection extends AbstractAction implements RequestHandlerInterface
      * @var PDO
      */
     private $dbConnection;
+    /**
+     * @var CollectionRepository
+     */
+    private $collectionRepository;
 
-    public function __construct(PDO $dbConnection)
+    public function __construct(CollectionRepository $collectionRepository)
     {
-
-        $this->dbConnection = $dbConnection;
+        $this->collectionRepository = $collectionRepository;
     }
 
     public function handle(ServerRequestInterface $request)

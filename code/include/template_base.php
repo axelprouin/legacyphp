@@ -1,14 +1,3 @@
-<?php
-session_start();
-
-//if ('identification' == $_GET['page'] and isset($_SESSION['identifie'])
-//    && true === $_SESSION['identifie']) {
-//    header('Location: index.php');
-//    require dirname(__FILE__) . '/../include/connexion.php';
-//}
-
- ?>
-
 <!DOCTYPE html>
 <html lang="fr">
     <head>

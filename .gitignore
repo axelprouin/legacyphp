@@ -5,3 +5,6 @@ logs/*
 !logs/.gitkeep
 
 /code/config/*.local.php
+
+.idea/*
+.idea
