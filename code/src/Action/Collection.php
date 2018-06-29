@@ -3,7 +3,7 @@
 namespace App\Action;
 
 use App\Polyfill\RequestHandlerInterface;
-use App\Repository\CollectionRepository;
+use App\Domain\Repository\CollectionRepository;
 use PDO;
 use Psr\Http\Message\ServerRequestInterface;
 use Zend\Diactoros\Response;

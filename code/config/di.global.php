@@ -53,7 +53,9 @@ $baseParams = [
         return new AjoutCollection();
     },
     'collection' => function(ContainerInterface $container) {
-        return new Collection($container->get('db_connection'));
+        return new Collection(
+            $container->get('domain_collection_repository_interface')
+        );
     },
     'db_connection' => function() {
         try {
@@ -94,6 +96,9 @@ $baseParams = [
                 {$exception->getMessage()}");
         }
 
+    },
+    'domain_collection_repository_interface' => function() {
+    
     },
     'logger' => function() {
         return new NullLogger();
